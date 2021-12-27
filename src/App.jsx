@@ -2,15 +2,13 @@ import './App.css';
 import React from 'react';
 import {Router} from '@reach/router';
 
-import Home from './layouts/home.jsx';
+import Home from './pages/home.jsx';
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <Home path="/" />
-      </Router>
-    </div>
+    <Router>
+      <Home path="/" />
+    </Router>
   );
 }
 
