@@ -6,7 +6,9 @@ import Body from './../layouts/body'
 import Container from './../layouts/container';
 import PageHead from './../layouts/page-head'
 import FlexGrid from './../layouts/flex-grid'
-import FlexColumn from './../layouts/flex-column'
+import FlexColumn4 from './../layouts/flex-column-4'
+
+import MediaCard from '../components/mediaCard';
 
 const Home = () => {
     const [data,setData] = useState([]);
@@ -28,6 +30,10 @@ const Home = () => {
                             romaji
                             english
                             native
+                        }
+                        coverImage{
+                            medium
+                            large
                         }
                         season
                         seasonYear
@@ -76,10 +82,9 @@ const Home = () => {
             <PageHead>AnimeList<br />(Tests GraphQL / TypeScript / StyledComponents)</PageHead>
             <FlexGrid>
                 {(Array.isArray(data.Page.mediaList) && data.Page.mediaList !== 0) && data.Page.mediaList.map(media=>( 
-                    <FlexColumn>
-                        {(console.log(media['media']))}
-                        {media['media']['title']['romaji']}
-                    </FlexColumn>
+                    <FlexColumn4 key={media['media']['id']}>
+                        <MediaCard data={media['media']} />
+                    </FlexColumn4>
                 ))}
             </FlexGrid>
         </Container>

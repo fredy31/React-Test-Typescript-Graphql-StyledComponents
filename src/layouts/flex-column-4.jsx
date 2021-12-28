@@ -7,6 +7,12 @@ const FlexColumnStyle = styled.div`
     max-width:25%;
     box-sizing:border-box;
     width:100%;
+    @media(max-width:768px){
+        max-width:50%;
+    }
+    @media(max-width:480px){
+        max-width:100%;
+    }
 `;
 
 const FlexColumn = (props) => {
