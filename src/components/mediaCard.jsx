@@ -6,7 +6,7 @@ import {Link} from '@reach/router';
 
 const MediaCardStyle = styled(Link)`
     padding:16px 0;
-    border-top:1px solid #555;
+    border-bottom:1px solid #555;
     display:flex;
     flex-direction:column;
     justify-content:space-between;

@@ -9,6 +9,7 @@ function App() {
   return (
     <Router>
       <Home path="/" />
+      <Home path="/page/:page" />
       <MediaSingle path="/media/:id" />
     </Router>
   );
