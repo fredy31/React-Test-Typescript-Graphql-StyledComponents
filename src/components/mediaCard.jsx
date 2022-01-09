@@ -63,6 +63,8 @@ const MediaCard = (props) => {
     return <MediaCardStyle to={"/media/"+props.data['id']}>
             <div>
                 <Thumbnail>
+                    <source srcSet={"https://testsreact.fredericpilon.com/webpconverter.php?src="+props.data['coverImage']['large']} type='image/webp' />
+                    <source srcSet={props.data['coverImage']['large']} type={"image/"+props.data['coverImage']['large'].split(/[#?]/)[0].split('.').pop().trim()} />
                     <Image loading="lazy" src={props.data['coverImage']['large']} />
                 </Thumbnail>
                 <MediaTitle>{props.data['title']['english']}</MediaTitle>
