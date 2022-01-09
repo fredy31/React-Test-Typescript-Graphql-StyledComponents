@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
 import FlexGrid from './flex-grid'
-import FlexColumn4 from './flex-column-4'
+import FlexColumn4 from './flex-column-1-4';
 
 import MediaCard from '../components/mediaCard';
 import LoadMore from '../components/loadMore';

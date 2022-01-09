@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components'
 
 const BodyStyle = styled.div`
-    min-height:100vw;
+    min-height:100vh;
     color:#fff;
     background:#111;
 `;

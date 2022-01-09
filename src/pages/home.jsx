@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 
 //import Loading from './loading';
 
@@ -21,6 +22,11 @@ const Flex = styled.div`
 const Home = (props) => {
     const page = (props.page) ? props.page : 1
     return <Body>
+        <Helmet>
+            <title>AnimeList (Tests React)</title>
+            <meta name='description' content='Ceci est un test de fonctionalités react via Animelist' />
+            <meta name='lang' content='fr_CA' />
+        </Helmet>
         <Container>
             <PageHead>AnimeList<br />(Tests GraphQL / TypeScript / StyledComponents)</PageHead>
             <SearchResultPage page={page} />
