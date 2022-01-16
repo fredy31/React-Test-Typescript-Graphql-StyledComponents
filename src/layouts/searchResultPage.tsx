@@ -6,8 +6,12 @@ import FlexColumn from './flex-column';
 import MediaCard from '../components/mediaCard';
 import LoadMore from '../components/loadMore';
 
-const SearchResultPage = (props) => {
-    const [data,setData] = useState([]);
+interface Props{
+    page:number
+}
+
+const SearchResultPage:React.FC<Props> = ({page}) => {
+    const [data,setData] = useState<any>([]);
     useEffect(()=>{
         var query = `
         query($page: Int){
@@ -41,7 +45,7 @@ const SearchResultPage = (props) => {
 
         // Define our query variables and values that will be used in the query request
         var variables = {
-            page: props.page
+            page: page
         };
 
         // Define the config we'll need for our Api request
@@ -68,13 +72,13 @@ const SearchResultPage = (props) => {
         }).catch((error)=>{
             console.log('error')
         });
-    },[props.page])
+    },[page])
     if(data.length === 0){
         return <LoadMore />;
     }
     return <FlexGrid>
-        {(Array.isArray(data.Page.mediaList) && data.Page.mediaList !== 0) && data.Page.mediaList.map(media=>( 
-            <FlexColumn col="3" key={media['media']['id']}>
+        {(Array.isArray(data.Page.mediaList) && data.Page.mediaList !== 0) && data.Page.mediaList.map((media:any)=>( 
+            <FlexColumn col={3} key={media['media']['id']}>
                 <MediaCard data={media['media']} />
             </FlexColumn>
         ))}

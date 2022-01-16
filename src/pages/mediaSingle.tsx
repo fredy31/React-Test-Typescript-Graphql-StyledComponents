@@ -2,10 +2,10 @@ import React,{useState,useEffect} from 'react';
 import Helmet from 'react-helmet';
 import Loading from './loading';
 
-import Body from './../layouts/body'
-import Container from './../layouts/container';
-import PageHead from './../layouts/page-head';
-import FlexGrid from './../layouts/flex-grid';
+import Body from '../layouts/body'
+import Container from '../layouts/container';
+import PageHead from '../layouts/page-head';
+import FlexGrid from '../layouts/flex-grid';
 
 import FlexColumn from '../layouts/flex-column';
 
@@ -29,7 +29,7 @@ const Flex = styled.div`
     justify-content:space-between;
     align-items:center;
 `;
-const Score = styled.div`
+const Score = styled.div<{score:number}>`
     border:2px solid currentColor;
     border-radius:999vw;
     display:flex;
@@ -49,8 +49,12 @@ const YoutubeIframe = styled.iframe`
     aspect-ratio: 16/9;
 `;
 
-const MediaSingle = (props) => {
-    const [data,setData] = useState([]);
+interface Props{
+    id:number
+}
+
+const MediaSingle:React.FC<Props> = ({id}) => {
+    const [data,setData] = useState<any>([]);;
     useEffect(()=>{
         var query = `
         query($id: Int){
@@ -79,7 +83,7 @@ const MediaSingle = (props) => {
 
         // Define our query variables and values that will be used in the query request
         var variables = {
-            id: props.id
+            id: id
         };
 
         // Define the config we'll need for our Api request
@@ -106,7 +110,7 @@ const MediaSingle = (props) => {
         }).catch((error)=>{
             console.log('error')
         });
-    },[props.id])
+    },[id])
     if(data.length === 0){
         return <Loading />;
     }
@@ -125,7 +129,7 @@ const MediaSingle = (props) => {
         <Container>
             <PageHead>{data['Media']['title']['romaji']}</PageHead>
             <FlexGrid>
-                <FlexColumn col="9">
+                <FlexColumn col={9}>
                     {data['Media']['trailer'] && 
                         <div>
                             {data['Media']['trailer']['site'] === 'youtube' &&
@@ -136,7 +140,7 @@ const MediaSingle = (props) => {
                     <h3>Description</h3>
                     <p dangerouslySetInnerHTML={{__html:data['Media']['description']}}></p>
                 </FlexColumn>
-                <FlexColumn col="3">
+                <FlexColumn col={3}>
                     <Thumbnail>
                         <source srcSet={"https://testsreact.fredericpilon.com/webpconverter.php?src="+data['Media']['coverImage']['large']} type='image/webp' />
                         <source srcSet={data['Media']['coverImage']['large']} type={"image/"+data['Media']['coverImage']['large'].split(/[#?]/)[0].split('.').pop().trim()} />

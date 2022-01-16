@@ -3,9 +3,9 @@ import Helmet from 'react-helmet';
 
 //import Loading from './loading';
 
-import Body from './../layouts/body'
-import Container from './../layouts/container';
-import PageHead from './../layouts/page-head'
+import Body from '../layouts/body'
+import Container from '../layouts/container';
+import PageHead from '../layouts/page-head'
 //import FlexGrid from './../layouts/flex-grid'
 //import FlexColumn4 from './../layouts/flex-column-4'
 import SearchResultPage from '../layouts/searchResultPage';
@@ -19,8 +19,11 @@ const Flex = styled.div`
     padding:32px 0;
 `;
 
-const Home = (props) => {
-    const page = (props.page) ? props.page : 1
+interface Props{
+    page:number
+};
+
+const Home:React.FC<Props> = ({page=1}) => {
     return <Body>
         <Helmet>
             <title>AnimeList (Tests React)</title>
@@ -31,33 +34,11 @@ const Home = (props) => {
             <PageHead>AnimeList<br />(Tests GraphQL / TypeScript / StyledComponents)</PageHead>
             <SearchResultPage page={page} />
             <Flex>
-                {(props.page>1) ? <Button linkto={"/page/"+(parseInt(page)-1)}>Précédent</Button> : <div></div>}
-                <div><Button linkto={"/page/"+(parseInt(page)+1)}>Suivant</Button></div>
+                {(page>1) ? <Button linkto={"/page/"+(page-1)}>Précédent</Button> : <div></div>}
+                <div><Button linkto={"/page/"+(page+1)}>Suivant</Button></div>
             </Flex>
         </Container>
     </Body>
 }
-
-/*function getData(){
-    useQuery("posts",async()=>{
-        const {
-            id = 15125
-        } = await request(
-            endpoint,
-            gql`
-                Media (id: 15125, type: ANIME) {
-                    id
-                    title {
-                        romaji
-                        english
-                        native
-                    }
-                }
-            `
-        );
-        console.log(data);
-        return data
-    })
-}*/
 
 export default Home;
