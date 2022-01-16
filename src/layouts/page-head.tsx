@@ -9,8 +9,11 @@ const PageHeadStyle = styled.div`
     font-weight:700;
 `;
 
-const PageHead = (props) => {
-    return <PageHeadStyle>{props.children}</PageHeadStyle>
+interface Props{
+}
+
+const PageHead:React.FC<Props> = ({children}) => {
+    return <PageHeadStyle>{children}</PageHeadStyle>
 }
 
 export default PageHead;

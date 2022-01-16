@@ -9,8 +9,11 @@ const FlexGridStyle = styled.div`
     width:calc(100% + 30px);
 `;
 
-const FlexGrid = (props) => {
-    return <FlexGridStyle>{props.children}</FlexGridStyle>
+interface Props{
+}
+
+const FlexGrid:React.FC<Props> = ({children}) => {
+    return <FlexGridStyle>{children}</FlexGridStyle>
 }
 
 export default FlexGrid;

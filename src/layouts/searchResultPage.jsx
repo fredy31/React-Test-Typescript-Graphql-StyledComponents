@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
 import FlexGrid from './flex-grid'
-import FlexColumn4 from './flex-column-1-4';
+import FlexColumn from './flex-column';
 
 import MediaCard from '../components/mediaCard';
 import LoadMore from '../components/loadMore';
@@ -74,9 +74,9 @@ const SearchResultPage = (props) => {
     }
     return <FlexGrid>
         {(Array.isArray(data.Page.mediaList) && data.Page.mediaList !== 0) && data.Page.mediaList.map(media=>( 
-            <FlexColumn4 key={media['media']['id']}>
+            <FlexColumn col="3" key={media['media']['id']}>
                 <MediaCard data={media['media']} />
-            </FlexColumn4>
+            </FlexColumn>
         ))}
     </FlexGrid>
 }

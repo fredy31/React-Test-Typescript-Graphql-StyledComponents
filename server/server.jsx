@@ -1,9 +1,9 @@
-import path from 'path'
-import fs from 'fs'
+import path from 'path';
+import fs from 'fs';
 
-import express from 'express'
-import React from 'react'
-import ReactDOMServer from 'react-dom/server'
+import express from 'express';
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
 
 import App from '../src/App'
 
@@ -37,5 +37,5 @@ app.use(router)
 
 // app.use(express.static('./build'))
 app.listen(PORT, () => {
-  console.log(`SSR running on port ${PORT}`)
-})
+  console.log("SSR running on port ${PORT}");
+});

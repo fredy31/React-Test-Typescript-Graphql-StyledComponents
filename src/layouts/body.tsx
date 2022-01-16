@@ -8,8 +8,12 @@ const BodyStyle = styled.div`
     background:#111;
 `;
 
-const Body = (props) => {
-    return <BodyStyle>{props.children}</BodyStyle>
+interface Props{
+
+}
+
+const Body:React.FC <Props> = ({children}) => {
+    return <BodyStyle>{children}</BodyStyle>
 }
 
 export default Body;

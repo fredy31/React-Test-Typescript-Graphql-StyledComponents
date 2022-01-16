@@ -7,8 +7,7 @@ import Container from './../layouts/container';
 import PageHead from './../layouts/page-head';
 import FlexGrid from './../layouts/flex-grid';
 
-import FlexColumn1Quarter from './../layouts/flex-column-1-4';
-import FlexColumn3Quarter from './../layouts/flex-column-3-4';
+import FlexColumn from '../layouts/flex-column';
 
 import styled from 'styled-components';
 
@@ -126,18 +125,18 @@ const MediaSingle = (props) => {
         <Container>
             <PageHead>{data['Media']['title']['romaji']}</PageHead>
             <FlexGrid>
-                <FlexColumn3Quarter>
+                <FlexColumn col="9">
                     {data['Media']['trailer'] && 
                         <div>
-                            {data['Media']['trailer']['site'] == 'youtube' &&
+                            {data['Media']['trailer']['site'] === 'youtube' &&
                                 <YoutubeIframe src={"https://www.youtube.com/embed/"+data['Media']['trailer']['id']}></YoutubeIframe>
                             }
                         </div>
                     }
                     <h3>Description</h3>
                     <p dangerouslySetInnerHTML={{__html:data['Media']['description']}}></p>
-                </FlexColumn3Quarter>
-                <FlexColumn1Quarter>
+                </FlexColumn>
+                <FlexColumn col="3">
                     <Thumbnail>
                         <source srcSet={"https://testsreact.fredericpilon.com/webpconverter.php?src="+data['Media']['coverImage']['large']} type='image/webp' />
                         <source srcSet={data['Media']['coverImage']['large']} type={"image/"+data['Media']['coverImage']['large'].split(/[#?]/)[0].split('.').pop().trim()} />
@@ -152,7 +151,7 @@ const MediaSingle = (props) => {
                     <Flex>
                         <b>Anilist Score:</b><Score score={data['Media']['averageScore']}>{data['Media']['averageScore']}</Score>
                     </Flex>
-                </FlexColumn1Quarter>
+                </FlexColumn>
             </FlexGrid>
         </Container>
     </Body>

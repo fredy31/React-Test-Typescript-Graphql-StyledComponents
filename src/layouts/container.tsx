@@ -8,8 +8,12 @@ const ContainerStyle = styled.div`
     padding:0 30px;
 `;
 
-const Container = (props) => {
-    return <ContainerStyle>{props.children}</ContainerStyle>
+interface Props{
+
+};
+
+const Container:React.FC <Props> = ({children}) => {
+    return <ContainerStyle>{children}</ContainerStyle>
 }
 
 export default Container;
