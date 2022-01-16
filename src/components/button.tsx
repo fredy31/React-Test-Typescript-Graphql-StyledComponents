@@ -22,8 +22,12 @@ const ButtonStyles = styled(Link)`
     }
 `;
 
-const Button = (props) => {
-    return <ButtonStyles to={props.linkto}>{props.children}</ButtonStyles>;
+interface Props{
+    linkto: string
+}
+
+const Button:React.FC <Props> = ({linkto,children}) => {
+    return <ButtonStyles to={linkto}>{children}</ButtonStyles>;
 }
 
 export default Button;

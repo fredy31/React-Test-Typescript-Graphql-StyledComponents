@@ -22,7 +22,11 @@ const Spinner = styled.div`
     margin:0 auto;
 `;
 
-const LoadMore = (props) => {
+interface Props{
+
+}
+
+const LoadMore:React.FC<Props> = () => {
     return <Spinner />;
 }
 

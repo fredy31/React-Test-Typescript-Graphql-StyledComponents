@@ -32,7 +32,7 @@ const MediaInfo = styled.div`
     width:100%;
     margin-top:16px;
 `;
-const Score = styled.div`
+const Score = styled.div<{score:number}>`
     border:2px solid currentColor;
     border-radius:999vw;
     display:flex;
@@ -59,20 +59,20 @@ const Image = styled.img`
     max-width:100%;
 `;
 
-const MediaCard = (props) => {
-    return <MediaCardStyle to={"/media/"+props.data['id']}>
+const MediaCard:React.FC<{data:any}> = ({data}) => {
+    return <MediaCardStyle to={"/media/"+data['id']}>
             <div>
                 <Thumbnail>
-                    <source srcSet={"https://testsreact.fredericpilon.com/webpconverter.php?src="+props.data['coverImage']['large']} type='image/webp' />
-                    <source srcSet={props.data['coverImage']['large']} type={"image/"+props.data['coverImage']['large'].split(/[#?]/)[0].split('.').pop().trim()} />
-                    <Image loading="lazy" src={props.data['coverImage']['large']} />
+                    <source srcSet={"https://testsreact.fredericpilon.com/webpconverter.php?src="+data['coverImage']['large']} type='image/webp' />
+                    <source srcSet={data['coverImage']['large']} type={"image/"+data['coverImage']['large'].split(/[#?]/)[0].split('.').pop().trim()} />
+                    <Image loading="lazy" src={data['coverImage']['large']} />
                 </Thumbnail>
-                <MediaTitle>{props.data['title']['english']}</MediaTitle>
-                <MediaJPTitle>{props.data['title']['romaji']}</MediaJPTitle>
+                <MediaTitle>{data['title']['english']}</MediaTitle>
+                <MediaJPTitle>{data['title']['romaji']}</MediaJPTitle>
             </div>
             <MediaInfo>
-                <div>{props.data['season'] + ' ' + props.data['seasonYear']}</div>
-                <Score score={props.data['averageScore']}>{props.data['averageScore']}</Score>
+                <div>{data['season'] + ' ' + data['seasonYear']}</div>
+                <Score score={data['averageScore']}>{data['averageScore']}</Score>
             </MediaInfo>
         </MediaCardStyle>;
 }
